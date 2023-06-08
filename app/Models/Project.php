@@ -20,7 +20,11 @@ class Project extends Model
         return Str::slug($title, '-');
     }
 
-
+  /**
+     * Get the category that owns the Post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);

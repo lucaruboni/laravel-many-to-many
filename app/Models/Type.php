@@ -11,6 +11,13 @@ class Type extends Model
 
     protected $fillable = ['name', 'slug'];
 
+    
+    /**
+     * Get all of the posts for the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
     public function project(): HasMany
   {
       return $this->hasMany(Project::class);
