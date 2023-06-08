@@ -13,7 +13,7 @@
         <div class="col">
             <h1>{{$project->title}}</h1>
             <div> <strong>Content: </strong>{{$project->content}}</div>
-            <div> <strong>type: </strong>{{$project->type}}</div>
+            <div> <strong>type: </strong>{{$project->type->name}}</div>
             
             </div>
                        

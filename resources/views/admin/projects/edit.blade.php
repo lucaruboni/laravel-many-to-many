@@ -52,7 +52,7 @@
             <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
                 <option value="">Select a type</option>
                 @foreach ($types as $type)
-                <option value="{{$catetypegory->id}}" {{ $type->id  == old('type_id', '') ? 'selected' : '' }}>{{$type->name}}</option>
+                <option value="{{$type->id}}" {{ $type->id  == old('type_id', '') ? 'selected' : '' }}>{{$type->name}}</option>
                 @endforeach
             </select>
         </div>

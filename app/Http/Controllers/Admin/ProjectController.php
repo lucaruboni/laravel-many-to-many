@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use \Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -31,8 +33,8 @@ class ProjectController extends Controller
     {
 
         $types = Type::orderByDesc('id')->get();
-        $technologies = Technology::orderByDesc('id')->get();
-        return view('admin.projects.create', compact('types', 'technologies'));
+        //$technologies = Technology::orderByDesc('id')->get();
+        return view('admin.projects.create', compact('types'));
 
         
     }
@@ -45,20 +47,20 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+       // dd($request->all());
         $val_data = $request->validated();
         // generate the title slug
         $slug = Project::generateSlug($val_data['title']);
         //dd($slug);
         $val_data['slug'] = $slug;
-        //dd($val_data);
 
         // Create the new Post
         Project::create($val_data);
 
                 // Attach the checked tags
-                if ($request->has('technologies')) {
-                    $new_project->technologies()->attach($request->technologies);
-                }
+               // if ($request->has('technologies')) {
+               //     $new_project->technologies()->attach($request->technologies);
+               // }
         
         // redirect back
         return to_route('admin.projects.index')->with('message', 'project Created Successfully');

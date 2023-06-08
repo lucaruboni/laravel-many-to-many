@@ -40,9 +40,9 @@
                         <td>{{$type->name}}</td>
                         <td>{{$type->slug}}</td>
                         <td>
-                        @if ($type->projects)
-                            <span class="badge bg-dark">{{ $type->projects->count() }}</span>
-                        @endif
+                        
+                            <span class="badge bg-dark">{{$type->project->count()}}</span>
+                     
 
                         </td>
                         <td>
